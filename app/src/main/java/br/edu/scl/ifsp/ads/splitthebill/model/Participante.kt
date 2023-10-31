@@ -1,13 +1,13 @@
-package br.edu.scl.ifsp.ads.splitthebill.model
+package br.edu.scl.ifsp.ads.contatospdm.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-
 @Parcelize
-data class Participante (
+// data class nao precisa de get e set
+data class Participante(
     var id: Int,
-    var nome: String,
-    var qtde_pagou: String,
-    var descricao: String,// descricao do que comprou
+    var name: String,
+    var qtde_paga: String,
+    var descricao: String
 ): Parcelable

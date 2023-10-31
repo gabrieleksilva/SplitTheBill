@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context="br.edu.scl.ifsp.ads.splitthebill.view.MainActivity" >
 
     <include
         android:id="@+id/toolBarIn"
@@ -18,7 +18,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/contatosLv"
+        android:id="@+id/participantLv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBarIn"

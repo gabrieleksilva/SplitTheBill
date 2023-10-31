@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SplitTheBill</string>
+    <string name="lista_participantes">Lista de participantes</string>
+    <string name="participant">Contato</string>
+    <string name="name">Name</string>
+    <string name="qtde_paga">Quantidade paga</string>
+    <string name="desc">Descricao</string>
+    <string name="save">Save</string>
+    <string name="add_contact">Add contact</string>
+    <string name="remove_participante">Remove contact</string>
+    <string name="update_participante">Edit contact</string>
+    <string name="visualizar_contact">visualizar_contact</string>
 </resources>
+
+
