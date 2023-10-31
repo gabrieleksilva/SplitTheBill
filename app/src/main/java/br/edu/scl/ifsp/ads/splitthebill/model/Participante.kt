@@ -7,8 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Participante (
     var id: Int,
-    var name: String,
-    var address: String,
-    var phone: String,
-    var email: String
+    var nome: String,
+    var qtde_pagou: String,
+    var descricao: String,// descricao do que comprou
 ): Parcelable
