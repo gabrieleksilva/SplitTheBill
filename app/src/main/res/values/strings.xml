@@ -6,10 +6,10 @@
     <string name="qtde_paga">Quantidade paga</string>
     <string name="desc">Descricao</string>
     <string name="save">Save</string>
-    <string name="add_contact">Add contact</string>
+    <string name="add_participante">Adicionar Participante</string>
     <string name="remove_participante">Remove contact</string>
     <string name="update_participante">Edit contact</string>
-    <string name="visualizar_contact">visualizar_contact</string>
+    <string name="visualizar_lista">Visualizar lista</string>
 </resources>
 
 

@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.scl.ifsp.ads.contatospdm.R
+import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityListaBinding
 import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityMainBinding
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.EXTRA_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.SIZE
@@ -19,9 +20,9 @@ import br.edu.scl.ifsp.ads.contatospdm.model.Constant.VIEW_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Participante
 import br.edu.scl.ifsp.ads.splitthebill.adapter.ParticipanteAdapter
 
-class MainActivity : AppCompatActivity() {
-    private val amb: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+class ListaActivity : AppCompatActivity() {
+    private val amb: ActivityListaBinding by lazy {
+        ActivityListaBinding.inflate(layoutInflater)
     }
     //Data source
     private val participantList: MutableList<Participante> = mutableListOf()
@@ -42,38 +43,48 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(amb.toolBarIn.toolbar)
 
         fillParticipantes()
-        amb.participantLv.adapter = participantAdapter
+        amb.listaLv.adapter = participantAdapter
 
         carl = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ){result ->
             //se o user clicar em aceite vou extrair um participante
             if (result.resultCode == RESULT_OK){
-                                        // como se fosse um getParticipante
+                val pa = participantList
+                val size = participantList.size
+                // como se fosse um getParticipante
                 val participante = result.data?.getParcelableExtra<Participante>(EXTRA_PARTICIPANT)
                 participante?.let { _participant ->
+
                     //se o participante existe na linha substitui
-                   if(participantList.any{ it.id == participante.id}) {
-                       val position = participantList.indexOfFirst { it.id == _participant.id }
-                       participantList[position] = _participant
-                   } else{ //se nao, cria um novo id
-                       participantList.add(_participant)
-                   }
+                    if(participantList.any{ it.id == participante.id}) {
+                        val position = participantList.indexOfFirst { it.id == _participant.id}
+                        participantList[position] = _participant
+
+                        val qutde_anterior = _participant.qtde_paga
+                        _participant.qtde_paga = qutde_anterior - (160/size)
+
+                    } else{ //se nao, cria um novo id
+                        participantList.add(_participant)
+                    }
                     //comando que avisa quando um participante novo eh adicionado
                     participantAdapter.notifyDataSetChanged()
                 }
             }
         }
         //findById
-        amb.participantLv.setOnItemClickListener { adapterView, view, position, l ->
+        amb.listaLv.setOnItemClickListener { adapterView, view, position, l ->
             val pa = participantList[position]
-            val viewParticipanteIntent = Intent(this, ParticipantActivity::class.java)
+            val size = participantList.size
+            val qutde_anterior = pa.qtde_paga
+            pa.qtde_paga = qutde_anterior - (160/size)
+            val viewParticipanteIntent = Intent(this, CalcularActivity::class.java)
             viewParticipanteIntent.putExtra(EXTRA_PARTICIPANT, pa)
             viewParticipanteIntent.putExtra(VIEW_PARTICIPANT, true)
             // carregando o usuário para outra tela
             startActivity(viewParticipanteIntent)
         }
-        registerForContextMenu(amb.participantLv)
+        registerForContextMenu(amb.listaLv)
     }
 
     //vai tratar os dados do menu
@@ -81,35 +92,6 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-//funcao que trata o evento de click no +
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-    if (item.title == "Adicionar Participante"){
-        return when(item.itemId){
-            R.id.addParticipantMi -> {
-                //Abrir a tela ParticipantActivity para adicionar
-                //um novo participante.
-                // uma intent dessa classe para a intent da participantActivity
-                carl.launch(Intent(this, ParticipantActivity::class.java))
-                true
-            }
-            else -> false
-        }
-    } else {
-        return when(item.itemId){
-            R.id.listaRachadinhaMi -> {
-                val intent = Intent(this, ListaActivity::class.java)
-                intent.putParcelableArrayListExtra(SIZE, ArrayList(participantList))
-                startActivity(intent)
-                carl.launch(Intent(this, ListaActivity::class.java))
-                true
-            }
-            else -> false
-        }
-    }
-
-    }
-
 
 
     override fun onCreateContextMenu(
@@ -118,29 +100,6 @@ class MainActivity : AppCompatActivity() {
         menuInfo: ContextMenu.ContextMenuInfo?
     ) {
         menuInflater.inflate(R.menu.context_menu_main, menu)
-    }
-
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        val position = (item.menuInfo as AdapterContextMenuInfo).position
-        return when (item.itemId){
-            R.id.removeParticipanteMi -> {
-                participantList.removeAt(position)
-                participantAdapter.notifyDataSetChanged()
-                Toast.makeText(this, "Participant removed.", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.updateParticipanteMi -> {
-                val participante = participantList[position]
-                val editParticipantIntent = Intent(this, ParticipantActivity::class.java)
-
-                editParticipantIntent.putExtra(EXTRA_PARTICIPANT, participante)
-                // carregando o participantw para outra tela
-                carl.launch(editParticipantIntent)
-                true
-            }
-            else -> { false }
-        }
-
     }
     private fun fillParticipantes() {
             participantList.add(
@@ -151,22 +110,22 @@ class MainActivity : AppCompatActivity() {
                     "comprou ingredientes"
                 )
             )
-        participantList.add(
-            Participante(
-                2,
-                "Lucas",
-                47.25,
-                "comprou bebidas"
+            participantList.add(
+                Participante(
+                    2,
+                    "Lucas",
+                    47.25,
+                    "comprou bebidas"
+                )
             )
-        )
-        participantList.add(
-            Participante(
-                3,
-                "Silvana",
-                38.75,
-                "comprou petiscos"
+            participantList.add(
+                Participante(
+                    3,
+                    "Silvana",
+                    38.75,
+                    "comprou petiscos"
+                )
             )
-        )
         participantList.add(
             Participante(
                 4,
@@ -181,7 +140,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterForContextMenu(amb.participantLv)
+        unregisterForContextMenu(amb.listaLv)
     }
 
 }

@@ -13,7 +13,13 @@
         android:theme="@style/Theme.SplitTheBill"
         tools:targetApi="31">
         <activity
-            android:name=".view.ParticipantActivity"
+            android:name="br.edu.scl.ifsp.ads.splitthebill.view.ParticipantActivity"
+            android:exported="false" />
+        <activity
+            android:name="br.edu.scl.ifsp.ads.splitthebill.view.ListaActivity"
+            android:exported="false" />
+        <activity
+            android:name="br.edu.scl.ifsp.ads.splitthebill.view.CalcularActivity"
             android:exported="false" />
         <activity
             android:name="br.edu.scl.ifsp.ads.splitthebill.view.MainActivity"

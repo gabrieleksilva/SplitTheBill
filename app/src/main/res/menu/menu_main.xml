@@ -4,6 +4,11 @@
  <item
      android:id="@+id/addParticipantMi"
      android:icon="@drawable/ic_add"
-     android:title="@string/add_contact"
+     android:title="@string/add_participante"
+     app:showAsAction="ifRoom" />
+ <item
+     android:id="@+id/listaRachadinhaMi"
+     android:icon="@drawable/ic_seta_foreground"
+     android:title="@string/visualizar_lista"
      app:showAsAction="ifRoom" />
 </menu>
