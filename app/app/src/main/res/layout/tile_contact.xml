@@ -5,17 +5,16 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/namePt"
+        android:id="@+id/nameTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        android:textSize="30sp" />
+        android:text="Name"
+        android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/valPt"
+        android:id="@+id/emailTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="valor pago"
-        android:textSize="20sp"/>
+        android:text="nobile@ifsp.edu.br" />
 
 </LinearLayout>

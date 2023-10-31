@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Loja</string>
+    <string name="lista_contatos">Lista de contatos</string>
+    <string name="contact">Contato</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="save">Save</string>
+    <string name="add_contact">Add contact</string>
+    <string name="remove_participante">Remove contact</string>
+    <string name="update_participante">Edit contact</string>
+    <string name="visualizar_contact">visualizar_contact</string>
+</resources>
+
+
