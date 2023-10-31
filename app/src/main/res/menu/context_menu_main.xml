@@ -6,7 +6,4 @@
     <item
         android:id="@+id/updateParticipanteMi"
         android:title="@string/update_participante"/>
-    <item
-        android:id="@+id/visualizarContas"
-        android:title="oi"/>
 </menu>
