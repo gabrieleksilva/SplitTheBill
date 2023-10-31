@@ -4,16 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityContactBinding
+import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityParticipantBinding
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.EXTRA_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.VIEW_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Participante
-
 import kotlin.random.Random
 
 class ParticipantActivity : AppCompatActivity() {
-    private val acb: ActivityContactBinding by lazy {
-        ActivityContactBinding.inflate(layoutInflater)
+    private val acb: ActivityParticipantBinding by lazy {
+        ActivityParticipantBinding.inflate(layoutInflater)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
