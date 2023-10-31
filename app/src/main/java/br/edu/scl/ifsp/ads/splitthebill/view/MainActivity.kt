@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                 Participante(
                     1,
                     "Fernando",
-                    "pagou 74,00",
+                    74.00,
                     "comprou ingredientes"
                 )
             )
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             Participante(
                 2,
                 "Lucas",
-                "pagou 47,25",
+                47.25,
                 "comprou bebidas"
             )
         )
@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
             Participante(
                 3,
                 "Silvana",
-                "pagou 38,75",
+                38.75,
                 "comprou petiscos"
             )
         )

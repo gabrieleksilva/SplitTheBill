@@ -40,7 +40,7 @@ class ParticipantActivity : AppCompatActivity() {
                 }
 
                 nameEt.setText(_receivedContact.name)
-                valorEt.setText(_receivedContact.qtde_paga)
+                valorEt.setText(_receivedContact.qtde_paga.toString())
                 descEt.setText(_receivedContact.descricao)
             }
         }
@@ -51,7 +51,7 @@ class ParticipantActivity : AppCompatActivity() {
                 val contact: Participante = Participante(
                     id = receivedContact?.id?:generateId(),
                     name = nameEt.text.toString(),
-                    qtde_paga = valorEt.text.toString(),
+                    qtde_paga = valorEt.text.toString().toDouble(),
                     descricao = descEt.text.toString()
                 )
 

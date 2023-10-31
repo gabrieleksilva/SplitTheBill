@@ -8,6 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class Participante(
     var id: Int,
     var name: String,
-    var qtde_paga: String,
+    var qtde_paga: Double,
     var descricao: String
 ): Parcelable
