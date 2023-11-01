@@ -19,6 +19,7 @@ import br.edu.scl.ifsp.ads.contatospdm.model.Constant.SIZE
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.VIEW_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Participante
 import br.edu.scl.ifsp.ads.splitthebill.adapter.ParticipanteAdapter
+import br.edu.scl.ifsp.ads.splitthebill.model.Item
 
 class ListaActivity : AppCompatActivity() {
     private val amb: ActivityListaBinding by lazy {
@@ -26,11 +27,13 @@ class ListaActivity : AppCompatActivity() {
     }
     //Data source
     private val participantList: MutableList<Participante> = mutableListOf()
+    private val itemList: MutableList<Item> = mutableListOf()
     //Adapter
     private val participantAdapter: ParticipanteAdapter by lazy{
         ParticipanteAdapter(
             this,
             participantList
+            , itemList
         )
     }
 

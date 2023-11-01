@@ -6,8 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityParticipantBinding
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.EXTRA_PARTICIPANT
+import br.edu.scl.ifsp.ads.contatospdm.model.Constant.ITEM
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.VIEW_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Participante
+import br.edu.scl.ifsp.ads.splitthebill.model.Item
 import kotlin.random.Random
 
 class ParticipantActivity : AppCompatActivity() {
@@ -24,6 +26,7 @@ class ParticipantActivity : AppCompatActivity() {
 
         //recebendo o contato na hora que clica em editar
         val receivedContact = intent.getParcelableExtra<Participante>(EXTRA_PARTICIPANT)
+        val receivedContactItem = intent.getParcelableExtra<Item>(ITEM)
 
         //se não for nullo..
         receivedContact?.let { _receivedContact ->
@@ -33,15 +36,19 @@ class ParticipantActivity : AppCompatActivity() {
                 if(viewContact){
                     //Desativando a edição dos campos de texto nameEt, addressEt, phoneEt e emailEt (tornando-os apenas leitura)
                     nameEt.isEnabled = false
-                    valorEt.isEnabled = false
-                    descEt.isEnabled = false
+                    //valorEt.isEnabled = false
+                    produtoEt.isEnabled = false
+                    valoProdutoEt.isEnabled = false
+                  //  descEt.isEnabled = false
                     //Tornando o botão saveBt invisível (removendo-o da tela).
                     saveBt.visibility = View.GONE
                 }
 
                 nameEt.setText(_receivedContact.name)
-                valorEt.setText(_receivedContact.qtde_paga.toString())
-                descEt.setText(_receivedContact.descricao)
+                //valorEt.setText(_receivedContact.qtde_paga.toString())
+                //descEt.setText(_receivedContact.descricao)
+                produtoEt.setText(receivedContactItem.toString())
+                valoProdutoEt.setText(_receivedContact.qtde_paga.toString())
             }
         }
 
@@ -51,8 +58,8 @@ class ParticipantActivity : AppCompatActivity() {
                 val contact: Participante = Participante(
                     id = receivedContact?.id?:generateId(),
                     name = nameEt.text.toString(),
-                    qtde_paga = valorEt.text.toString().toDouble(),
-                    descricao = descEt.text.toString()
+                    qtde_paga = valoProdutoEt.text.toString().toDouble(),
+                    descricao = produtoEt.text.toString()
                 )
 
                 val resultIntent = Intent()

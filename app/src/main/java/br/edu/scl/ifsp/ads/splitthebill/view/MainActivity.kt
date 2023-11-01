@@ -14,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import br.edu.scl.ifsp.ads.contatospdm.R
 import br.edu.scl.ifsp.ads.contatospdm.databinding.ActivityMainBinding
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.EXTRA_PARTICIPANT
+import br.edu.scl.ifsp.ads.contatospdm.model.Constant.ITEM
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.SIZE
 import br.edu.scl.ifsp.ads.contatospdm.model.Constant.VIEW_PARTICIPANT
 import br.edu.scl.ifsp.ads.contatospdm.model.Participante
 import br.edu.scl.ifsp.ads.splitthebill.adapter.ParticipanteAdapter
+import br.edu.scl.ifsp.ads.splitthebill.model.Item
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy {
@@ -25,11 +27,13 @@ class MainActivity : AppCompatActivity() {
     }
     //Data source
     private val participantList: MutableList<Participante> = mutableListOf()
+    private val itemList: MutableList<Item> = mutableListOf()
     //Adapter
     private val participantAdapter: ParticipanteAdapter by lazy{
         ParticipanteAdapter(
             this,
             participantList
+            , itemList
         )
     }
 
@@ -42,7 +46,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(amb.toolBarIn.toolbar)
 
         fillParticipantes()
+        fillItem()
         amb.participantLv.adapter = participantAdapter
+
+
 
         carl = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -67,9 +74,15 @@ class MainActivity : AppCompatActivity() {
         //findById
         amb.participantLv.setOnItemClickListener { adapterView, view, position, l ->
             val pa = participantList[position]
+            val vetorItem :String
             val viewParticipanteIntent = Intent(this, ParticipantActivity::class.java)
             viewParticipanteIntent.putExtra(EXTRA_PARTICIPANT, pa)
             viewParticipanteIntent.putExtra(VIEW_PARTICIPANT, true)
+            val arraList: ArrayList<Item> = ArrayList(itemList)
+//            for (i in 0..2){
+//                arraList.add(itemList[i])
+//            }
+            viewParticipanteIntent.putParcelableArrayListExtra(ITEM, arraList)
             // carregando o usuário para outra tela
             startActivity(viewParticipanteIntent)
         }
@@ -143,12 +156,23 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun fillParticipantes() {
-            participantList.add(
+        var itemF1 : Item = Item( "maca", 5.2)
+        var itemF2 : Item = Item("banana", 10.0)
+        var itemF3 : Item = Item("manga", 30.0)
+//        for (i in 1..3){
+//            //$i
+//            itemList[i].produto
+//        }
+        participantList.add(
                 Participante(
                     1,
                     "Fernando",
-                    74.00,
-                    "comprou ingredientes"
+                    itemF1.valor + itemF2.valor + itemF3.valor,
+                    itemF1.produto+ " = "+ itemF1.valor+
+                            ",\n" +
+                            itemF2.produto+ " = "+ itemF2.valor+
+                            ", \n" +
+                            itemF3.produto+ " = "+ itemF3.valor
                 )
             )
         participantList.add(
@@ -172,12 +196,17 @@ class MainActivity : AppCompatActivity() {
                 4,
                 "Eloize",
                 0.0,
-                "nada"
+                itemList.toString()
             )
         )
     }
 
+    private fun fillItem() {
+        itemList.add(Item( "maca", 5.2))
+        itemList.add(Item("banana", 10.0))
+        itemList.add(Item("manga", 30.0))
 
+    }
 
     override fun onDestroy() {
         super.onDestroy()
