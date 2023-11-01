@@ -4,4 +4,5 @@ object Constant {
     const val EXTRA_PARTICIPANT = "EXTRA_PARTICIPANT"
     const val VIEW_PARTICIPANT = "VIEW_PARTICIPANT"
     const val SIZE = "SIZE"
+    const val ITEM = "ITEM"
 }

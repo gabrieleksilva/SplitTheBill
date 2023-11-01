@@ -10,11 +10,16 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textSize="25sp" />
+    <TextView
+        android:id="@+id/produtoTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/produto" />
 
     <TextView
         android:id="@+id/valorTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="valor" />
+        android:text="@string/valor_item" />
 
 </LinearLayout>

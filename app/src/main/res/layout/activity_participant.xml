@@ -26,27 +26,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBarIn" />
 
-    <EditText
-        android:id="@+id/valorEt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        android:hint="@string/qtde_paga"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEt" />
+<!--    <EditText-->
+<!--        android:id="@+id/valorEt"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPostalAddress"-->
+<!--        android:hint="@string/qtde_paga"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/nameEt" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/descEt"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:hint="@string/desc"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/valorEt" />-->
 
     <EditText
-        android:id="@+id/descEt"
+        android:id="@+id/produtoEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/desc"
+        android:hint="@string/produto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valorEt" />
+        app:layout_constraintTop_toBottomOf="@id/nameEt" />
+    />
+    <EditText
+        android:id="@+id/valoProdutoEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/valor_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/produtoEt" />
+    />
 
     <Button
         android:id="@+id/saveBt"
@@ -55,5 +78,5 @@
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descEt" />
+        app:layout_constraintTop_toBottomOf="@+id/valoProdutoEt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,14 +38,16 @@ class CalcularActivity : AppCompatActivity() {
 
                     //Desativando a edição dos campos de texto nameEt, addressEt, phoneEt e emailEt (tornando-os apenas leitura)
                     nameEt.isEnabled = false
-                    valorEt.isEnabled = false
-                    descEt.isEnabled = false
+                    //valorEt.isEnabled = false
+                    produtoEt.isEnabled = false
+                    valoProdutoEt.isEnabled = false
+                   // descEt.isEnabled = false
                     //Tornando o botão saveBt invisível (removendo-o da tela).
                     saveBt.visibility = View.GONE
                 }
                 nameEt.setText(_receivedContact.name)
-                valorEt.setText(_receivedContact.qtde_paga.toString())
-                descEt.setText(_receivedContact.descricao)
+               // valorEt.setText(_receivedContact.qtde_paga.toString())
+                //descEt.setText(_receivedContact.descricao)
             }
         }
     }

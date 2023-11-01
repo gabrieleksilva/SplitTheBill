@@ -10,6 +10,8 @@
     <string name="remove_participante">Remove contact</string>
     <string name="update_participante">Edit contact</string>
     <string name="visualizar_lista">Visualizar lista</string>
+    <string name="produto">Produto</string>
+    <string name="valor_item">Valor</string>
 </resources>
 
 
